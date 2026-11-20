@@ -12,7 +12,8 @@ class Signup extends StatelessWidget {
   final TextEditingController email=TextEditingController();
   final TextEditingController password=TextEditingController();
   final TextEditingController phone=TextEditingController();
-  GlobalKey<FormState> keyy=GlobalKey<FormState>();
+  // GlobalKey<FormState> keyy=GlobalKey<FormState>();
+  GlobalKey<FormState> keyy=GlobalKey();
   Signup({super.key});
 
   @override
@@ -32,7 +33,7 @@ class Signup extends StatelessWidget {
           const Text("Sign Up",style:  TextStyle(fontSize: 50,color: Colors.black),),
          
          Customtow(label: "Name",controller:name , prefiex: Icons.person, sufiex: Icons.person, ),SizedBox(height: 30,),
-         Customtow(label: "Password",controller: password, prefiex: Icons.lock, sufiex: Icons.lock, obcure: true,),SizedBox(height: 30,),
+         Customtow(label: "Password",controller: password, prefiex: Icons.lock, sufiex: Icons.lock),SizedBox(height: 30,),// شيلت ال  obscure true 
          Customtow(label: "Phone",controller:phone , prefiex: Icons.phone, sufiex: Icons.phone, ),SizedBox(height: 30,),
          Customtow(label: "Email",controller:email , prefiex: Icons.email, sufiex: Icons.email, ),SizedBox(height: 30,),
 
@@ -46,7 +47,8 @@ class Signup extends StatelessWidget {
                 email: email.text,
                 phone: phone.text,
               );
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:Text( data ?"Done": "Try again"),backgroundColor:data? Colors.green :Colors.deepOrange, ));
+              // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:Text( data ?"Done": "Try again"),backgroundColor:data? Colors.green :Colors.deepOrange, ));
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:Text(providerobject.auto?.message ?? "Try again"),backgroundColor:data? Colors.green :Colors.deepOrange, ));
           
                 if (data){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => Login(),));

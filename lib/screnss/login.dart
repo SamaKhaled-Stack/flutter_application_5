@@ -28,14 +28,14 @@ Login({super.key});
 
          ElevatedButton(
             onPressed: () async {
-    if (!keyy.currentState!.validate()) return;
+    if (keyy.currentState!.validate()) return;
 
     final data = await providerobject.login(
       password: password.text,
       email: email.text,
     );
 
-    if (!context.mounted) return;
+    // if (!context.mounted) return; 
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -44,8 +44,9 @@ Login({super.key});
       ),
     );
 
-    if (data == true) {
-      Navigator.pushReplacement(
+    if (data) {
+      // Navigator.pushReplacement(
+      Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const Homepage()),
       );
